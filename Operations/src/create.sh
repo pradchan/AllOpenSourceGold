@@ -25,7 +25,7 @@ python Operations/src/CreateComputeCloudInstance.py ${cloud_username} ${cloud_pa
     # Read the IP address of Compute from hosts file
     ip=`python Operations/src/Public_IP.py ${cloud_username} ${cloud_password} ${cloud_domain} ${compute_rest_url} ${compute_instance_prefix}`
 
-    while (true)  
+    while (true)
     do
     	ssh -i Operations/src/cloudnative -tt -o StrictHostKeyChecking=no opc@${ip} "exit;"
     	case $? in
@@ -45,7 +45,16 @@ python Operations/src/CreateComputeCloudInstance.py ${cloud_username} ${cloud_pa
     # Ensure the compute is up and running after restart
     echo "Attempting to SSH to Compute..."  
 
-	while (true); do exec 3>/dev/tcp/${ip}/22; if [ $? -eq 0 ]; then echo "SSH up" ; break ; else echo "SSH still down" ; sleep 60 ; fi done
+    while (true)
+    do
+    	ssh -i Operations/src/cloudnative -tt -o StrictHostKeyChecking=no opc@${ip} "exit;"
+    	case $? in
+        	(0) echo "Successfully connected."; break ;;
+        	(*) echo "SSH Port not ready yet, waiting 30 seconds..." ;;
+    	esac
+    	sleep 30
+    done
+	#while (true); do exec 3>/dev/tcp/${ip}/22; if [ $? -eq 0 ]; then echo "SSH up" ; break ; else echo "SSH still down" ; sleep 60 ; fi done
 
     # Install Docker platform
     ssh -i Operations/src/cloudnative -tt -o StrictHostKeyChecking=no opc@${ip} < Operations/src/docker-post-conf.sh
