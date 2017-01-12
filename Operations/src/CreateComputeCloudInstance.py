@@ -300,7 +300,8 @@ while instance['state'] != 'running':
     print('Instance is not up and running. Wait for 30 seconds before re-check.')
     time.sleep(30)
     instance = occ.getInstances(instanceName=instance['name'])
-print('Instance is running. Moving on.')
+print('Instance is running. Moving on. Just wait for another 30 seconds for SSH to be up.')
+time.sleep(30)
 
 writeHostFile(ipReservation['ip'])
 
