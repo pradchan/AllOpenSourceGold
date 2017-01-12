@@ -58,7 +58,7 @@ python Operations/src/CreateComputeCloudInstance.py ${cloud_username} ${cloud_pa
 
     # Install Docker platform
     ssh -i Operations/src/cloudnative -tt -o StrictHostKeyChecking=no opc@${ip} < Operations/src/docker-post-conf.sh
-    ssh -i Operations/src/cloudnative -tt -o StrictHostKeyChecking=no opc@${ip} "sleep 30; sudo service docker start; sleep 120; sudo service docker restart; exit;"
+    #ssh -i Operations/src/cloudnative -tt -o StrictHostKeyChecking=no opc@${ip} "sleep 30; sudo service docker start; sleep 120; sudo service docker restart; exit;"
 fi
 
 sleep 30
