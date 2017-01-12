@@ -7,7 +7,7 @@ do
   eval "${key}='${value}'"
 done < "$config_file"
 
-instance=`python Operations/src/Instance_Name.py ${cloud_username} ${cloud_password} ${cloud_domain} ${cloud_rest_url} ${compute_instance_prefix}`
+instance=`python Operations/src/Instance_Name.py ${cloud_username} ${cloud_password} ${cloud_domain} ${compute_rest_url} ${compute_instance_prefix}`
 
 if [ ${#instance} -gt 0 ]; then
     echo "Compute VM already exists...Deleting Docker containers..."

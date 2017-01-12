@@ -11,19 +11,19 @@ do
   eval "${key}='${value}'"
 done < "$config_file"
 
-instance=`python Operations/src/Instance_Name.py ${cloud_username} ${cloud_password} ${cloud_domain} ${cloud_rest_url} ${compute_instance_prefix}`
+instance=`python Operations/src/Instance_Name.py ${cloud_username} ${cloud_password} ${cloud_domain} ${compute_rest_url} ${compute_instance_prefix}`
 
 if [ ${#instance} -gt 0 ]; then
     echo "Compute VM already exists..."  
     # Read the IP address of Compute from hosts file
-    ip=`python Operations/src/Public_IP.py ${cloud_username} ${cloud_password} ${cloud_domain} ${cloud_rest_url} ${compute_instance_prefix}`
+    ip=`python Operations/src/Public_IP.py ${cloud_username} ${cloud_password} ${cloud_domain} ${compute_rest_url} ${compute_instance_prefix}`
 else
-python Operations/src/CreateComputeCloudInstance.py ${cloud_username} ${cloud_password} ${cloud_domain} ${cloud_rest_url} ${compute_instance_prefix}
+python Operations/src/CreateComputeCloudInstance.py ${cloud_username} ${cloud_password} ${cloud_domain} ${compute_rest_url} ${compute_instance_prefix}
     echo "Sleep for 60 seconds for the SSH port of the Compute instance to be accessible"
     sleep 60
 
     # Read the IP address of Compute from hosts file
-    ip=`python Operations/src/Public_IP.py ${cloud_username} ${cloud_password} ${cloud_domain} ${cloud_rest_url} ${compute_instance_prefix}`
+    ip=`python Operations/src/Public_IP.py ${cloud_username} ${cloud_password} ${cloud_domain} ${compute_rest_url} ${compute_instance_prefix}`
 
     #    while (true)  
     #do

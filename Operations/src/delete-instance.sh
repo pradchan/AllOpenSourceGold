@@ -7,4 +7,4 @@ do
   eval "${key}='${value}'"
 done < "$config_file"
 
-python Operations/src/DeleteInstance.py ${cloud_username} ${cloud_password} ${cloud_domain} ${cloud_rest_url} ${compute_instance_prefix}
+python Operations/src/DeleteInstance.py ${cloud_username} ${cloud_password} ${cloud_domain} ${compute_rest_url} ${compute_instance_prefix}

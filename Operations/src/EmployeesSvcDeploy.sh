@@ -7,7 +7,7 @@ do
   eval "${key}='${value}'"
 done < "$config_file"
 
-ip=`python Operations/src/Public_IP.py ${cloud_username} ${cloud_password} ${cloud_domain} ${cloud_rest_url} ${compute_instance_prefix}`
+ip=`python Operations/src/Public_IP.py ${cloud_username} ${cloud_password} ${cloud_domain} ${compute_rest_url} ${compute_instance_prefix}`
 
 echo "IP address: ${ip}"
 cat <<EOF >Employees/deployment.json
