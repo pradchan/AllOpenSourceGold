@@ -1,6 +1,6 @@
 #!/bin/bash
 
-config_file="PythonScripts/src/config.properties"
+config_file="Operations/src/config.properties"
 while IFS='=' read -r key value
 do
   key=$(echo $key | tr '.' '_')

@@ -27,7 +27,7 @@ python Operations/src/CreateComputeCloudInstance.py ${cloud_username} ${cloud_pa
 
     while (true)  
     do
-    	ssh -i PythonScripts/src/cloudnative -tt -o StrictHostKeyChecking=no opc@${ip} "exit;"
+    	ssh -i Operations/src/cloudnative -tt -o StrictHostKeyChecking=no opc@${ip} "exit;"
     	case $? in
         	(0) echo "Successfully connected."; break ;;
         	(*) echo "SSH Port not ready yet, waiting 30 seconds..." ;;
@@ -35,6 +35,7 @@ python Operations/src/CreateComputeCloudInstance.py ${cloud_username} ${cloud_pa
     	sleep 30
     done
 
+	#ssh $host "echo 2>&1" && echo $host OK || echo $host NOK
 	#while (true); do exec 3>/dev/tcp/${ip}/22; if [ $? -eq 0 ]; then echo "SSH up" ; break ; else echo "SSH still down" ; sleep 60 ; fi done
                         
 	# Connect to Compute instance and prepare ground for Docker installation
