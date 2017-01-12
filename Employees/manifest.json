@@ -1,0 +1,6 @@
+{
+ "runtime": {
+ "majorVersion": "8"
+ },
+ "command": "java -jar target/Employees-1.0.jar server config.yml"
+}

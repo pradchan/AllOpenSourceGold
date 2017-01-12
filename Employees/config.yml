@@ -1,0 +1,10 @@
+logging:
+  level: INFO
+  loggers:
+    com.oracle: DEBUG
+
+database:
+    driverClass: com.mysql.jdbc.Driver
+    user: hr_user
+    password: welcome1
+    url: jdbc:mysql://192.168.99.100:3307/hr
