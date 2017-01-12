@@ -30,7 +30,7 @@ python Operations/src/CreateComputeCloudInstance.py ${cloud_username} ${cloud_pa
     	ssh -i PythonScripts/src/cloudnative -tt -o StrictHostKeyChecking=no opc@${ip} "exit;"
     	case $? in
         	(0) echo "Successfully connected."; break ;;
-        	(*) echo "SSH Port not ready yet, waiting 10 seconds..." ;;
+        	(*) echo "SSH Port not ready yet, waiting 30 seconds..." ;;
     	esac
     	sleep 30
     done
