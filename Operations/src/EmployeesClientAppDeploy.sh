@@ -18,7 +18,7 @@ sleep 15
 echo "Uploading the ZIP file in Storage Container..."
 curl -i -X PUT \
     -u ${cloud_username}:${cloud_password} \
-    https://${cloud_domain}.storage.oraclecloud.com/v1/Storage-${cloud_domain}/cloudnative-service/EmployeesService.zip \
+    https://${cloud_domain}.storage.oraclecloud.com/v1/Storage-${cloud_domain}/cloudnative-service/EmployeesClient.zip \
     -T EmployeesClient/EmployeesClient.zip
 sleep 15
 
