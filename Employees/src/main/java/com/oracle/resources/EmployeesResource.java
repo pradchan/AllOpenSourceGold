@@ -79,7 +79,7 @@ public class EmployeesResource {
 
 	@POST
 	public Response insertEmployee(Employee employee) {
-		int result = dao.insert(employee.getEmployee_id(), employee.getFirst_name(), employee.getLast_name(), employee.getEmail(), employee.getPhone_no(), employee.getHire_date(), employee.getSalary());
+		int result = dao.insert(employee.getFirst_name(), employee.getLast_name(), employee.getEmail(), employee.getPhone_no(), employee.getHire_date(), employee.getSalary());
 		dao.close();
 		String msg = (result == 1) ? "{\"status\":\"Successfully inserted...\"}" : "{\"status\":\"Failed to insert...\"}";
 		return Response.ok(msg).build();
