@@ -15,9 +15,9 @@
 	<name>Employees</name>
 
 	<properties>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<dropwizard.version>1.0.3</dropwizard.version>
 		<mainClass>com.oracle.EmployeesApplication</mainClass>
@@ -49,6 +49,11 @@
 		<dependency>
 			<groupId>io.dropwizard</groupId>
 			<artifactId>dropwizard-jdbi</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>io.dropwizard</groupId>
+			<artifactId>dropwizard-assets</artifactId>
+			<version>${dropwizard.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>mysql</groupId>
@@ -154,15 +159,15 @@
 				</executions>
 			</plugin>
 		</plugins>
-	
-	<extensions>
-		<extension>
-			<artifactId>wagon-webdav-jackrabbit</artifactId>
-			<groupId>org.apache.maven.wagon</groupId>
-			<version>2.2</version>
-		</extension>
-	</extensions>
-</build>
+
+		<extensions>
+			<extension>
+				<artifactId>wagon-webdav-jackrabbit</artifactId>
+				<groupId>org.apache.maven.wagon</groupId>
+				<version>2.2</version>
+			</extension>
+		</extensions>
+	</build>
 
 	<reporting>
 		<plugins>
@@ -180,21 +185,21 @@
 			</plugin>
 		</plugins>
 	</reporting>
-  <distributionManagement>
-    <repository>
-	   <uniqueVersion>false</uniqueVersion>
-	   <id>DeveloperCloud</id>
-	   <name>Developer Cloud Repository</name>
-	   <url>dav:https://developer.em2.oraclecloud.com/developer53110-gse00000588/s/developer53110-gse00000588_allopensourcebundle_3260/maven/</url>
-	   <layout>default</layout>
-    </repository>
-  </distributionManagement>
+	<distributionManagement>
+		<repository>
+			<uniqueVersion>false</uniqueVersion>
+			<id>DeveloperCloud</id>
+			<name>Developer Cloud Repository</name>
+			<url>dav:https://developer.em2.oraclecloud.com/developer53110-gse00000588/s/developer53110-gse00000588_allopensourcebundle_3260/maven/</url>
+			<layout>default</layout>
+		</repository>
+	</distributionManagement>
 
-  <repositories>
-    <repository>
-      <!-- Server credential ID defined in $HOME/.m2/settings.xml -->
-	   <id>23ea615368b4125de98853bee3a146bf</id>
-	   <url>https://developer.em2.oraclecloud.com/developer53110-gse00000588/s/developer53110-gse00000588_allopensourcebundle_3260/maven/</url>
-    </repository>
-  </repositories>
+	<repositories>
+		<repository>
+			<!-- Server credential ID defined in $HOME/.m2/settings.xml -->
+			<id>23ea615368b4125de98853bee3a146bf</id>
+			<url>https://developer.em2.oraclecloud.com/developer53110-gse00000588/s/developer53110-gse00000588_allopensourcebundle_3260/maven/</url>
+		</repository>
+	</repositories>
 </project>
