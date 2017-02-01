@@ -50,12 +50,13 @@ public class EmployeesApplication extends Application<EmployeesConfiguration> {
         cors.setInitParameter("allowedMethods", "OPTIONS,GET,PUT,POST,DELETE,HEAD");
 
         // Add URL mapping
-        cors.addMappingForUrlPatterns(EnumSet.allOf(DispatcherType.class), true, "/api/*");
+        cors.addMappingForUrlPatterns(EnumSet.allOf(DispatcherType.class), true, "/*");
     	
     	LOGGER.info("Registering EmployeesResource...");
     	final DBIFactory factory = new DBIFactory();
         final DBI jdbi = factory.build(environment, configuration.getDataSourceFactory(), "mysql");
         final EmployeesDAO dao = jdbi.onDemand(EmployeesDAO.class);
+        environment.jersey().setUrlPattern("/api/*");
     	environment.jersey().register(new EmployeesResource(dao));
     }
 
