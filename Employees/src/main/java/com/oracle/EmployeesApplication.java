@@ -33,7 +33,7 @@ public class EmployeesApplication extends Application<EmployeesConfiguration> {
 
     @Override
     public void initialize(final Bootstrap<EmployeesConfiguration> bootstrap) {
-    	bootstrap.addBundle(new AssetsBundle("/public", "/", "index.html"));
+    	bootstrap.addBundle(new AssetsBundle("/public", "/client", "index.html"));
     	// TODO: application initialization
     }
 
@@ -51,7 +51,6 @@ public class EmployeesApplication extends Application<EmployeesConfiguration> {
 
         // Add URL mapping
         cors.addMappingForUrlPatterns(EnumSet.allOf(DispatcherType.class), true, "/*");
-        environment.jersey().setUrlPattern("/api/*");
     	
     	LOGGER.info("Registering EmployeesResource...");
     	final DBIFactory factory = new DBIFactory();
