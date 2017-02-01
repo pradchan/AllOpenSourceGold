@@ -51,6 +51,7 @@ public class EmployeesApplication extends Application<EmployeesConfiguration> {
 
         // Add URL mapping
         cors.addMappingForUrlPatterns(EnumSet.allOf(DispatcherType.class), true, "/*");
+        environment.jersey().setUrlPattern("/api/*");
     	
     	LOGGER.info("Registering EmployeesResource...");
     	final DBIFactory factory = new DBIFactory();
