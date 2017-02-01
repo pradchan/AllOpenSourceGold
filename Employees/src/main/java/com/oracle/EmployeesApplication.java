@@ -34,7 +34,7 @@ public class EmployeesApplication extends Application<EmployeesConfiguration> {
 
     @Override
     public void initialize(final Bootstrap<EmployeesConfiguration> bootstrap) {
-    	bootstrap.addBundle(new AssetsBundle("/public", "/client", "index.html"));
+    	bootstrap.addBundle(new AssetsBundle("/public", "/", "index.html"));
     }
 
     @Override
@@ -50,7 +50,7 @@ public class EmployeesApplication extends Application<EmployeesConfiguration> {
         cors.setInitParameter("allowedMethods", "OPTIONS,GET,PUT,POST,DELETE,HEAD");
 
         // Add URL mapping
-        cors.addMappingForUrlPatterns(EnumSet.allOf(DispatcherType.class), true, "/*");
+        cors.addMappingForUrlPatterns(EnumSet.allOf(DispatcherType.class), true, "/api/*");
     	
     	LOGGER.info("Registering EmployeesResource...");
     	final DBIFactory factory = new DBIFactory();
