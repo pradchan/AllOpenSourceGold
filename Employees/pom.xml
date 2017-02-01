@@ -51,9 +51,9 @@
 			<artifactId>dropwizard-jdbi</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>io.dropwizard</groupId>
-			<artifactId>dropwizard-assets</artifactId>
-			<version>${dropwizard.version}</version>
+		    <groupId>io.dropwizard</groupId>
+		    <artifactId>dropwizard-assets</artifactId>
+		    <version>${dropwizard.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>mysql</groupId>

@@ -17,6 +17,7 @@ import io.dropwizard.Application;
 import io.dropwizard.jdbi.DBIFactory;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
+import io.dropwizard.assets.AssetsBundle;
 
 public class EmployeesApplication extends Application<EmployeesConfiguration> {
 
