@@ -35,7 +35,6 @@ public class EmployeesApplication extends Application<EmployeesConfiguration> {
     @Override
     public void initialize(final Bootstrap<EmployeesConfiguration> bootstrap) {
     	bootstrap.addBundle(new AssetsBundle("/public", "/client", "index.html"));
-    	// TODO: application initialization
     }
 
     @Override

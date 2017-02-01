@@ -6,5 +6,5 @@ do
   eval "${key}='${value}'"
 done < "$config_file"
 
-sed -i 's/IDENTITY_DOMAIN/'$cloud_domain'/' EmployeesClient/index.html
-sed -i 's/DATACENTER/'$ACCS_DATACENTER'/' EmployeesClient/index.html
+sed -i 's/IDENTITY_DOMAIN/'$cloud_domain'/' Employees/src/main/resources/public/index.html
+sed -i 's/DATACENTER/'$ACCS_DATACENTER'/' Employees/src/main/resources/public/index.html
