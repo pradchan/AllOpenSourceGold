@@ -26,7 +26,7 @@ cat <<EOF >Employees/deployment.json
     "services": [{
         "identifier": "MySQLService",
         "type": "MYSQLCS",
-        "name": "EmployeeMySQLDB",
+        "name": "EmployeeMySQL",
         "username": "root",
         "password": "Welc0me_2017"
     }]
