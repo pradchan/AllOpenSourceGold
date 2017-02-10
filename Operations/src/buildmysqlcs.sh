@@ -5,14 +5,13 @@ usage () {
 	exit 1;
 }
 
-if [ $# -ne 2 ]; then 
-	usage;
-fi
-
 export BASE="Operations/src";
 
-export cloud_username=$(curl -s -X GET -H 'X-Oracle-Authorization: Basic Z3NlLWRldm9wc193d0BvcmFjbGUuY29tOjVjWmJzWkxuMQ==' 'https://adsweb.oracleads.com/apex/adsweb/parameters/democloud_admin_opc_email' | jq '.items[].value' | tr -d '"')
-export cloud_password=$(curl -s -X GET -H 'X-Oracle-Authorization: Basic Z3NlLWRldm9wc193d0BvcmFjbGUuY29tOjVjWmJzWkxuMQ==' 'https://adsweb.oracleads.com/apex/adsweb/parameters/democloud_admin_opc_password' | jq '.items[].value' | tr -d '"')
+#export cloud_username=$(curl -s -X GET -H 'X-Oracle-Authorization: Basic Z3NlLWRldm9wc193d0BvcmFjbGUuY29tOjVjWmJzWkxuMQ==' 'https://adsweb.oracleads.com/apex/adsweb/parameters/democloud_admin_opc_email' | jq '.items[].value' | tr -d '"')
+#export cloud_password=$(curl -s -X GET -H 'X-Oracle-Authorization: Basic Z3NlLWRldm9wc193d0BvcmFjbGUuY29tOjVjWmJzWkxuMQ==' 'https://adsweb.oracleads.com/apex/adsweb/parameters/democloud_admin_opc_password' | jq '.items[].value' | tr -d '"')
+
+cloud_username=$3
+cloud_password=$4
 
 echo "Printing GSE Credentials"
 echo "$cloud_username - $cloud_password"
@@ -24,8 +23,10 @@ cloud_domain=$1
 DC="us";
 
 if [ "$2x" -eq "em2x" ]; then
-  $DC="europe";
+  DC="europe";
 fi
+
+echo "DC =  $DC";
 
 cloud_paas_rest_url=apaas.${DC}.oraclecloud.com;
 DBAAS_NAME=EmployeeMySQL

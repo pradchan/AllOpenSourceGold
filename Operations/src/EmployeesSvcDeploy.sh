@@ -1,6 +1,6 @@
 #!/bin/bash
-cloud_domain=$1;
-cloud_zone=$2;
+cloud_domain=$1
+cloud_zone=$2
 
 if [ "$cloud_zone" -eq "em2" ]; then
   cloud_zone="europe";
@@ -10,8 +10,11 @@ cloud_paas_rest_url=https://appas.$cloud_zone.oraclecloud.com
 
 echo "Connecting to $cloud_paas_rest_url"
 
-export cloud_username=$(curl -s -X GET -H 'X-Oracle-Authorization: Basic Z3NlLWRldm9wc193d0BvcmFjbGUuY29tOjVjWmJzWkxuMQ==' 'https://adsweb.oracleads.com/apex/adsweb/parameters/democloud_admin_opc_email' | jq '.items[].value' | tr -d '"')
-export cloud_password=$(curl -s -X GET -H 'X-Oracle-Authorization: Basic Z3NlLWRldm9wc193d0BvcmFjbGUuY29tOjVjWmJzWkxuMQ==' 'https://adsweb.oracleads.com/apex/adsweb/parameters/democloud_admin_opc_password' | jq '.items[].value' | tr -d '"')
+#export cloud_username=$(curl -s -X GET -H 'X-Oracle-Authorization: Basic Z3NlLWRldm9wc193d0BvcmFjbGUuY29tOjVjWmJzWkxuMQ==' 'https://adsweb.oracleads.com/apex/adsweb/parameters/democloud_admin_opc_email' | jq '.items[].value' | tr -d '"')
+#export cloud_password=$(curl -s -X GET -H 'X-Oracle-Authorization: Basic Z3NlLWRldm9wc193d0BvcmFjbGUuY29tOjVjWmJzWkxuMQ==' 'https://adsweb.oracleads.com/apex/adsweb/parameters/democloud_admin_opc_password' | jq '.items[].value' | tr -d '"')
+
+cloud_username=$3
+cloud_password=$4
 
 echo "Printing GSE Credentials"
 echo "$cloud_username - $cloud_password"
