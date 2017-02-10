@@ -2,7 +2,7 @@
 cloud_domain=$1
 cloud_zone=$2
 
-if [ "$cloud_zone" -eq "em2" ]; then
+if [ "${cloud_zone}" -eq "em2" ]; then
   cloud_zone="europe";
 fi
 
