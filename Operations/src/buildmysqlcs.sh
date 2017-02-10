@@ -47,8 +47,8 @@ sleep 60;
 if test "${dbviewoutput#*$DBAAS_NAME}" != "$dbviewoutput"
     then
         # $DBAAS_NAME is in $dbviewoutput
-		json_string=`cat opc_mysqlcs_view.log | grep -o "{.*" > state_json.json`
-		current_state=`python readCurrentStatus.py`
+		json_string=`cat ${BASE}/opc_mysqlcs_view.log | grep -o "{.*" > state_json.json`
+		current_state=`python ${BASE}/readCurrentStatus.py`
 		rm ${BASE}/opc_mysqlcs_view.log
 
 		if [ "$current_state" == "READY" ]
