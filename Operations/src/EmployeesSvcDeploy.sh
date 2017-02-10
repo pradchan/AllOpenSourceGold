@@ -1,22 +1,32 @@
 #!/bin/bash
+cloud_domain=$1;
+cloud_zone=$2;
 
-config_file="Operations/src/config.properties"
-while IFS='=' read -r key value
-do
-  key=$(echo $key | tr '.' '_')
-  eval "${key}='${value}'"
-done < "$config_file"
+if [ "$cloud_zone" -eq "em2" ]; then
+  cloud_zone="europe";
+fi
 
-ip=`python Operations/src/Public_IP.py ${cloud_username} ${cloud_password} ${cloud_domain} ${compute_rest_url} ${compute_instance_prefix}`
+cloud_paas_rest_url=https://appas.$cloud_zone.oraclecloud.com
 
-echo "IP address: ${ip}"
+echo "Connecting to $cloud_paas_rest_url"
+
+export cloud_username=$(curl -s -X GET -H 'X-Oracle-Authorization: Basic Z3NlLWRldm9wc193d0BvcmFjbGUuY29tOjVjWmJzWkxuMQ==' 'https://adsweb.oracleads.com/apex/adsweb/parameters/democloud_admin_opc_email' | jq '.items[].value' | tr -d '"')
+export cloud_password=$(curl -s -X GET -H 'X-Oracle-Authorization: Basic Z3NlLWRldm9wc193d0BvcmFjbGUuY29tOjVjWmJzWkxuMQ==' 'https://adsweb.oracleads.com/apex/adsweb/parameters/democloud_admin_opc_password' | jq '.items[].value' | tr -d '"')
+
+echo "Printing GSE Credentials"
+echo "$cloud_username - $cloud_password"
+
 cat <<EOF >Employees/deployment.json
 {
     "memory": "2G",
     "instances": "1",
-    "environment": {
-        "EMPLOYEES_DATABASE_HOST":"${ip}"
-    }
+    "services": [{
+        "identifier": "MySQLService",
+        "type": "MYSQLCS",
+        "name": "EmployeeMySQLDB",
+        "username": "root",
+        "password": "Welc0me_2017"
+    }]
 }
 EOF
 

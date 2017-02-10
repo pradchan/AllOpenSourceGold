@@ -1,0 +1,8 @@
+OPERATION,METHOD,REST_ENDPOINT
+VIEW,GET,https://psm.europe.oraclecloud.com/
+STOP,POST,https://psm.europe.oraclecloud.com/
+START,POST,https://psm.europe.oraclecloud.com/
+RESTART,POST,https://psm.europe.oraclecloud.com/
+SCALE,PUT,https://psm.europe.oraclecloud.com/
+BUILD,POST,https://psm.europe.oraclecloud.com/
+DELETE,DELETE,https://psm.europe.oraclecloud.com/

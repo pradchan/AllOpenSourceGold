@@ -29,8 +29,11 @@ public class EmployeesConfiguration extends Configuration {
 
 	@JsonProperty("database")
     public void setDataSourceFactory(DataSourceFactory database) {
-        Optional<String> ipAddress = Optional.ofNullable(System.getenv("EMPLOYEES_DATABASE_HOST"));
-        String URL = "jdbc:mysql://"+ipAddress.orElse("192.168.99.100")+":3307/hr";
+
+	Optional<String> ipAddress = Optional.ofNullable(System.getenv("EMPLOYEES_DATABASE_HOST"));
+        String URL = "jdbc:mysql://"+System.getenv("MYSQLCS_CONNECT_STRING");
+		//+":"+System.getenv("MYSQLCS_MYSQL_PORT")+"/EmployeeMySQLDB"
+System.out.println(URL);
         database.setUrl(URL);
 		this.database = database;
     }
