@@ -6,7 +6,7 @@ if [ "${cloud_zone}" == "em2" ]; then
   cloud_zone="europe";
 fi
 
-cloud_paas_rest_url=https://appas.$cloud_zone.oraclecloud.com
+cloud_paas_rest_url=https://apaas.$cloud_zone.oraclecloud.com
 
 echo "Connecting to $cloud_paas_rest_url"
 
