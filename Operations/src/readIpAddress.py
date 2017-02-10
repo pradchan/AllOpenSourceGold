@@ -5,7 +5,7 @@ Created on Feb 6, 2017
 '''
 import json, sys
 
-with open ("ip_json.json", "r") as myfile:
+with open ("Operations/src/ip_json.json", "r") as myfile:
     data=myfile.readlines()
 
 parsed_json = json.loads(data[0])
