@@ -22,7 +22,7 @@ echo "$cloud_username - $cloud_password"
 cloud_domain=$1
 DC="us";
 
-if [ "${2}x" -eq "em2x" ]; then
+if [ "${2}x" == "em2x" ]; then
   DC="europe";
 fi
 
