@@ -39,7 +39,10 @@ if [ ${DC} != "europe" ]; then
 	sed -i 's/psm.europe.oraclecloud.com/psm.us.oraclecloud.com/g' ${BASE}/opc-mysqlcs-ws.ref
 fi
 
+
 dbviewoutput=`python ${BASE}/opc-mysqlcs.py -i ${cloud_domain} -u ${cloud_username} -p ${cloud_password} -o VIEW -l ${BASE}/opc_mysqlcs_view.log -w ${BASE}/opc-mysqlcs-ws.ref -n ${DBAAS_NAME}`
+
+sleep 60;
 
 if test "${dbviewoutput#*$DBAAS_NAME}" != "$dbviewoutput"
     then
@@ -68,9 +71,13 @@ if test "${dbviewoutput#*$DBAAS_NAME}" != "$dbviewoutput"
 		sed -i 's/DBAAS_ADMIN_PASSWORD/'$DBAAS_ADMIN_PASSWORD'/' ${BASE}/create-mysqlcs-img.json
 		
 		python ${BASE}/opc-mysqlcs.py -i ${cloud_domain} -u ${cloud_username} -p ${cloud_password} -o BUILD -w ${BASE}/opc-mysqlcs-ws.ref -l ${BASE}/opc_mysqlcs.log -d ${BASE}/create-mysqlcs-img.json
+		
+		sleep 60;
 fi
 
 python ${BASE}/opc-mysqlcs.py -i ${cloud_domain} -u ${cloud_username} -p ${cloud_password} -o VIEW -w ${BASE}/opc-mysqlcs-ws.ref -l ${BASE}/opc_mysqlcs_view.log -n ${DBAAS_NAME}
+
+sleep 60;
 
 json_string=`cat ${BASE}/opc_mysqlcs_view.log | grep -o "{.*" > ${BASE}/ip_json.json`
 
