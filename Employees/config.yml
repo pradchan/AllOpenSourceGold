@@ -4,7 +4,7 @@ logging:
     com.oracle: DEBUG
 
 database:
-    driverClass: com.mysql.jdbc.Driver
-    user: hr_user
-    password: welcome1
-    url: jdbc:mysql://192.168.99.100:3307/hr
+    driverClass: com.mysql.cj.jdbc.Driver
+    user: root
+    password: Welc0me_2017
+    url: jdbc:mysql://140.86.34.69:3306/EmployeeMySQLDB?autoReconnect=true&useSSL=false

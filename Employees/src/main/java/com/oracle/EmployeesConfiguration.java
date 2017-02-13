@@ -20,7 +20,7 @@ public class EmployeesConfiguration extends Configuration {
 		Optional<String> port = Optional.ofNullable(System.getenv("PORT"));
     	DefaultServerFactory factory = (DefaultServerFactory) getServerFactory();
     	HttpConnectorFactory cfactory = (HttpConnectorFactory) factory.getApplicationConnectors().get(0);
-    	cfactory.setPort(Integer.parseInt(port.orElse("8128")));
+    	cfactory.setPort(Integer.parseInt(port.orElse("8126")));
 	}
 
 	@NotNull
@@ -30,11 +30,28 @@ public class EmployeesConfiguration extends Configuration {
 	@JsonProperty("database")
     public void setDataSourceFactory(DataSourceFactory database) {
 
-	Optional<String> ipAddress = Optional.ofNullable(System.getenv("EMPLOYEES_DATABASE_HOST"));
-        String URL = "jdbc:mysql://"+System.getenv("MYSQLCS_CONNECT_STRING");
-		//+":"+System.getenv("MYSQLCS_MYSQL_PORT")+"/EmployeeMySQLDB"
-System.out.println(URL);
-        database.setUrl(URL);
+		final String URL = "jdbc:mysql://";
+	    final String LOCAL_USERNAME = "root";
+	    final String LOCAL_PASSWORD = "Welc0me_2017";
+	    final String LOCAL_DEFAULT_CONNECT_DESCRIPTOR = "140.86.34.69:3306/EmployeeMySQLDB";
+
+	    final Optional<String> DBAAS_USERNAME = Optional.ofNullable(System.getenv("MYSQLCS_USER_NAME"));
+	    final Optional<String> DBAAS_PASSWORD = Optional.ofNullable(System.getenv("MYSQLCS_USER_PASSWORD"));
+	    final Optional<String> DBAAS_DEFAULT_CONNECT_DESCRIPTOR = Optional.ofNullable(System.getenv("MYSQLCS_CONNECT_STRING"));
+	    
+	    String finalUrl = URL + DBAAS_DEFAULT_CONNECT_DESCRIPTOR.orElse(LOCAL_DEFAULT_CONNECT_DESCRIPTOR)+"?autoReconnect=true&verifyServerCertificate=false&useSSL=false";
+	    
+	    database.setUrl(finalUrl);
+	    database.setUser(DBAAS_USERNAME.orElse(LOCAL_USERNAME));
+	    database.setPassword(DBAAS_PASSWORD.orElse(LOCAL_PASSWORD));
+
+	    System.out.println("URL: "+database.getUrl());
+	    System.out.println("User: "+database.getUser());
+	    System.out.println("Password: "+database.getPassword());
+	    System.out.println(database.getProperties());
+
+//		Optional<String> ipAddress = Optional.ofNullable(System.getenv("EMPLOYEES_DATABASE_HOST"));
+//        String URL = "jdbc:mysql://"+ipAddress.orElse("192.168.99.100")+":3307/hr";
 		this.database = database;
     }
 
