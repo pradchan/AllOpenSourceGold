@@ -35,8 +35,8 @@ public class EmployeesResource {
 		List<Employee> list = dao.getAllEmployees();
 		dao.close();
 		if (list.size() == 0) {
-			String msg = "{'status':'No records found...'}";
-			return Response.ok(msg).build();
+			//String msg = "{'status':'No records found...'}";
+			return Response.ok().build();
 		}
 		return Response.ok(list).build();
     }
@@ -47,8 +47,8 @@ public class EmployeesResource {
 		List<Employee> list = dao.getEmployeesByEmployeeId(employeeid);
 		dao.close();
 		if (list.size() == 0) {
-			String msg = "{'status':'No records found...'}";
-			return Response.ok(msg).build();
+			//String msg = "{'status':'No records found...'}";
+			return Response.ok().build();
 		}
 		return Response.ok(list).build();
     }
@@ -59,8 +59,8 @@ public class EmployeesResource {
 		List<Employee> list = dao.getEmployeesByFirstName(firstname);
 		dao.close();
 		if (list.size() == 0) {
-			String msg = "{'status':'No records found...'}";
-			return Response.ok(msg).build();
+			//String msg = "{'status':'No records found...'}";
+			return Response.ok().build();
 		}
 		return Response.ok(list).build();
     }
@@ -71,8 +71,8 @@ public class EmployeesResource {
 		List<Employee> list = dao.getEmployeesByEmail(email);
 		dao.close();
 		if (list.size() == 0) {
-			String msg = "{'status':'No records found...'}";
-			return Response.ok(msg).build();
+			//String msg = "{'status':'No records found...'}";
+			return Response.ok().build();
 		}
 		return Response.ok(list).build();
     }
