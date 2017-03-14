@@ -2,8 +2,12 @@
 cloud_domain=$1
 cloud_zone=$2
 
-if [ "${cloud_zone}" == "em2" ]; then
+if [[ $cloud_zone == em* ]]; then
   cloud_zone="europe";
+else
+    if [[ $cloud_zone == us* ]]; then
+        cloud_zone="us";
+    fi
 fi
 
 cloud_paas_rest_url=https://apaas.$cloud_zone.oraclecloud.com
